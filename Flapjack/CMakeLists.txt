@@ -1,5 +1,5 @@
-add_library(Pancake SHARED ...files to be added...)
+add_library(Flapjack SHARED Flapjack.h FlapjackApp.h FlapjackUtil.h FlapjackApp.cpp)
 
-//Definitions are prefixed with -D ex:  -DDEFINITION_TO_BE_ADDED
-add_definitions(-DAIR_LIB)
-add_definitions(-DAIR_DEBUG)
+
+add_definitions(-DFLAPJACK_LIB)
+add_definitions(-DFLAPJACK_DEBUG)
