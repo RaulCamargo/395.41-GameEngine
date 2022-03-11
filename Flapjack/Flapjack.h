@@ -1,6 +1,7 @@
 #pragma once
 
 #include "FlapjackApp.h"
+#include "GameWindow.h"
 
 
 

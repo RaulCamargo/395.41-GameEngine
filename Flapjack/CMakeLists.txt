@@ -3,3 +3,5 @@ add_library(Flapjack SHARED Flapjack.h FlapjackApp.h FlapjackUtil.h FlapjackApp.
 
 add_definitions(-DFLAPJACK_LIB)
 add_definitions(-DFLAPJACK_DEBUG)
+
+target_precompile_headers(Flapjack PRIVATE pch.h)

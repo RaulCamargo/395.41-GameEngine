@@ -9,6 +9,9 @@ namespace FJ
 	public:
 		void Run();
 		virtual void OnUpdate();
+
+	private:
+
 	};
 
 }
