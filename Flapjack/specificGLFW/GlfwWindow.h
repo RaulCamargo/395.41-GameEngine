@@ -18,7 +18,7 @@ namespace FJ
 		~GlfwWindow();
 
 	private:
-		GLFWwindow* mGlfwWindow;
+		GLFWwindow* mGLFWwindow{ nullptr };
 	};
 
 }

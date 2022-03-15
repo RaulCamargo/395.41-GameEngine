@@ -1,10 +1,11 @@
 #pragma once
 
 #include "WindowImplementation.h"
+#include "FlapjackUtil.h"
 
 namespace FJ
 {
-	class GameWindow
+	class FLAPJACK_API GameWindow
 	{
 	public:
 		static void Init();

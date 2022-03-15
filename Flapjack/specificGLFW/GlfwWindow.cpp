@@ -6,28 +6,29 @@ namespace FJ
 {
 	GlfwWindow::GlfwWindow()
 	{
-		if (!glfwInit())
-			FLAPJACK_LOG("Error: GLFW failed to initialize.");
+		{
+			if (!glfwInit())
+				FLAPJACK_LOG("Error: GLFW failed to initialize.");
+		}
 	}
-	
 	bool GlfwWindow::CreateWindow(int width, int height, const std::string& windowName)
 	{
-		mGlfwWindow = glfwCreateWindow(width, height, windowName.c_str(), NULL, NULL); // c_str() makes C++ string useable by C
+		mGLFWwindow = glfwCreateWindow(width, height, windowName.c_str(), NULL, NULL); // c_str() makes C++ string useable by C
 
-		if (mGlfwWindow == nullptr)
+		if (mGLFWwindow == nullptr)
 		{
 			FLAPJACK_LOG("Error: Window creation failed.");
 			return false;
 		}
 
-		glfwMakeContextCurrent(mGlfwWindow);
+		glfwMakeContextCurrent(mGLFWwindow);
 
 		return true;
 	}
 
 	void GlfwWindow::SwapBuffers()
 	{
-		glfwSwapBuffers(mGlfwWindow);
+		glfwSwapBuffers(mGLFWwindow);
 	}
 
 	void GlfwWindow::CollectEvents()
@@ -38,7 +39,7 @@ namespace FJ
 	int GlfwWindow::GetWidth() const
 	{
 		int width, height;
-		glfwGetWindowSize(mGlfwWindow, &width, &height); // & in this usage is C "address of" not C++ reference.
+		glfwGetWindowSize(mGLFWwindow, &width, &height); // & in this usage is C "address of" not C++ reference.
 
 		return width;
 	}
@@ -46,15 +47,15 @@ namespace FJ
 	int GlfwWindow::GetHeight() const
 	{
 		int width, height;
-		glfwGetWindowSize(mGlfwWindow, &width, &height); // & in this usage is C "address of" not C++ reference.
+		glfwGetWindowSize(mGLFWwindow, &width, &height); // & in this usage is C "address of" not C++ reference.
 
 		return height;
 	}
 	
 	GlfwWindow::~GlfwWindow()
 	{
-		if (mGlfwWindow != nullptr)
-			glfwDestroyWindow(mGlfwWindow);
+		if (mGLFWwindow != nullptr)
+			glfwDestroyWindow(mGLFWwindow);
 
 		glfwTerminate();
 	}
