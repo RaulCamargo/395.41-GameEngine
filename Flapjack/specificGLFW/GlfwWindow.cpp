@@ -1,4 +1,6 @@
 #include "pch.h"
+
+#include <glad/glad.h>
 #include "GlfwWindow.h"
 #include "FlapjackUtil.h"
 
@@ -22,6 +24,9 @@ namespace FJ
 		}
 
 		glfwMakeContextCurrent(mGLFWwindow);
+
+		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
+			FLAPJACK_LOG("ERROR: GLAD failed to initialize!");
 
 		return true;
 	}
