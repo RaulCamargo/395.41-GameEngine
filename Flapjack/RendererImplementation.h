@@ -9,5 +9,6 @@ namespace FJ
 	{
 	public:
 		virtual void Draw(FJ::Sprite& picture, int xPos, int yPos, int zPos, FJ::Shader shader) = 0;
+		virtual void ClearScreen() = 0;
 	};
 }

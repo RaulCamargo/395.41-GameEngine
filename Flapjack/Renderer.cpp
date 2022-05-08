@@ -18,6 +18,11 @@ namespace FJ
         mInstance->mImplementation->Draw(picture, xPos, yPos, zPos, mInstance->mShader);
     }
 
+    void Renderer::ClearScreen()
+    {
+        mInstance->mImplementation->ClearScreen();
+    }
+
     Renderer::Renderer() : 
         mShader("../Flapjack/Assets/Shaders/defaultVertex.glsl", "../Flapjack/Assets/Shaders/defaultFragment.glsl")
     {

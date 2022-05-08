@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "glad/glad.h"
+
 #include "FlapjackApp.h"
 #include "GameWindow.h"
 #include "Sprite.h"
@@ -25,8 +25,7 @@ namespace FJ
 		{
 			OnUpdate();
 
-			glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT);
+			Renderer::ClearScreen();
 
 			Renderer::Draw(star, 50, 20, 1);
 
