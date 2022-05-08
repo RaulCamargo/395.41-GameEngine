@@ -8,11 +8,19 @@ namespace FJ
 {
 	OpenGLSprite::OpenGLSprite(const std::string& file)
 	{
+		stbi_set_flip_vertically_on_load(true);
+
+		int numChannels;
+		unsigned char* data = stbi_load(file.c_str(), &mWidth, &mHeight, &numChannels, 0);
+
+		if (data == NULL)
+			FLAPJACK_LOG("ERROR: Texture did not load.");
+
 		float vertices[] = {
-			-0.5f, -0.5f, 0.0f, 0.0f, // Bottom left
-			-0.5f,  0.5f, 0.0f, 1.0f, // Top left
-			 0.5f,  0.5f, 1.0f, 1.0f, // Top right
-			 0.5f, -0.5f, 1.0f, 0.0f  // Bottom right
+			 0.0f,          0.0f,           0.0f, 0.0f, // Bottom left
+			 0.0f,          (float)mHeight, 0.0f, 1.0f, // Top left
+			 (float)mWidth, (float)mHeight, 1.0f, 1.0f, // Top right
+			 (float)mWidth, 0.0f,           1.0f, 0.0f  // Bottom right
 		};
 
 		unsigned int indices[] = {
@@ -46,14 +54,6 @@ namespace FJ
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
-		stbi_set_flip_vertically_on_load(true);
-
-		int numChannels;
-		unsigned char* data = stbi_load(file.c_str(), &mWidth, &mHeight, &numChannels, 0);
-
-		if (data == NULL)
-			FLAPJACK_LOG("ERROR: Texture did not load.");
 
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, mWidth, mHeight, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
 		glGenerateMipmap(GL_TEXTURE_2D);
