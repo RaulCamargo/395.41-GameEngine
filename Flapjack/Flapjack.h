@@ -2,6 +2,9 @@
 
 #include "FlapjackApp.h"
 #include "GameWindow.h"
+#include "Sprite.h"
+#include "Shader.h"
+#include "Renderer.h"
 
 
 

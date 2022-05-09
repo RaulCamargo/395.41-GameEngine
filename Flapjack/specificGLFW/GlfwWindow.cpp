@@ -24,6 +24,7 @@ namespace FJ
 		}
 
 		glfwMakeContextCurrent(mGLFWwindow);
+		glfwSwapInterval(1);
 
 		if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 			FLAPJACK_LOG("ERROR: GLAD failed to initialize!");

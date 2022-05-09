@@ -21,16 +21,26 @@ namespace FJ
 
 		FJ::Sprite star{ "../Flapjack/Assets/Images/Star.png" };
 
+		int xPos{ -star.GetWidth() };
+
+		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
+
 		while (true)
 		{
 			OnUpdate();
 
 			Renderer::ClearScreen();
 
-			Renderer::Draw(star, 50, 20, 1);
+			Renderer::Draw(star, xPos, 20, 1);
+
+			xPos = (xPos + 5);
+
+			std::this_thread::sleep_until(mNextFrameTime);
 
 			FJ::GameWindow::GetWindow()->SwapBuffers();
 			FJ::GameWindow::GetWindow()->CollectEvents();
+
+			mNextFrameTime += mFrameDuration;
 		}
 	}
 	void FlapjackApp::OnUpdate()

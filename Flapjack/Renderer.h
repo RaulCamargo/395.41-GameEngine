@@ -3,10 +3,10 @@
 #include "Sprite.h"
 #include "Shader.h"
 #include "RendererImplementation.h"
-
+#include "FlapjackUtil.h"
 namespace FJ
 {
-	class Renderer
+	class FLAPJACK_API Renderer
 	{
 	public:
 		static void Init();
