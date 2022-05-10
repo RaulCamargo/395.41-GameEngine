@@ -5,7 +5,8 @@
 #include "Sprite.h"
 #include "Shader.h"
 #include "Renderer.h"
-
+#include "Events.h"
+#include "KeyCodes.h"
 
 namespace FJ
 {
@@ -25,15 +26,25 @@ namespace FJ
 
 		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
 
+		int x{ 50 }, y{ 50 };
+		auto keyCall = [&x](const KeyPressedEvent& event) 
+		{
+			if (event.GetKeyCode() == FLAPJACK_KEY_LEFT) x -= 5;
+			else if (event.GetKeyCode() == FLAPJACK_KEY_RIGHT) x += 5;
+		};
+		auto keyReleased = [](const KeyReleasedEvent& event) {FLAPJACK_LOG(event.GetKeyCode()); };
+		
+		SetKeyPressedCallBack(keyCall);
+		//SetKeyReleasedCallBack(keyReleased);
+
+
 		while (true)
 		{
 			OnUpdate();
 
 			Renderer::ClearScreen();
 
-			Renderer::Draw(star, xPos, 20, 1);
-
-			xPos = (xPos + 5);
+			Renderer::Draw(star, x, y, 1);
 
 			std::this_thread::sleep_until(mNextFrameTime);
 
@@ -46,5 +57,15 @@ namespace FJ
 	void FlapjackApp::OnUpdate()
 	{
 
+	}
+	
+	void FlapjackApp::SetKeyPressedCallBack( std::function<void(const KeyPressedEvent&)> keyPressedCallback)
+	{
+		GameWindow::GetWindow()->SetKeyPressedCallback(keyPressedCallback);
+	}
+	
+	void FlapjackApp::SetKeyReleasedCallBack(std::function<void(const KeyReleasedEvent&)> keyReleasedCallback)
+	{
+		GameWindow::GetWindow()->SetKeyReleasedCallback(keyReleasedCallback);
 	}
 }

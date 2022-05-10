@@ -123,7 +123,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>FLAPJACK_LIB;FLAPJACK_OPENGL;FLAPJACK_WINDOWS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>FLAPJACK_LIB;FLAPJACK_OPENGL;FLAPJACK_WINDOWS;FLAPJACK_DEBUG</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -156,10 +156,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Events.h" />
     <ClInclude Include="Flapjack.h" />
     <ClInclude Include="FlapjackApp.h" />
     <ClInclude Include="FlapjackUtil.h" />
     <ClInclude Include="GameWindow.h" />
+    <ClInclude Include="KeyCodes.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RendererImplementation.h" />
@@ -174,6 +176,7 @@
     <ClInclude Include="WindowImplementation.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Events.cpp" />
     <ClCompile Include="FlapjackApp.cpp" />
     <ClCompile Include="GameWindow.cpp" />
     <ClCompile Include="pch.cpp">

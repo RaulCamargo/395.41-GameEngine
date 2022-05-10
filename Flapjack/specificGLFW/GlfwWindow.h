@@ -2,6 +2,7 @@
 
 #include "WindowImplementation.h"
 #include "GLFW/glfw3.h"
+#include "Events.h"
 
 
 namespace FJ
@@ -17,7 +18,17 @@ namespace FJ
 		virtual int GetHeight() const override;
 		~GlfwWindow();
 
+		virtual void SetKeyPressedCallback( std::function<void(const KeyPressedEvent&)> keyPressedCallback) override;
+		virtual void SetKeyReleasedCallback( std::function<void(const KeyReleasedEvent&)> keyReleasedCallback) override;
+		
 	private:
+		struct Callbacks
+		{
+			std::function<void(const KeyPressedEvent&)> keyPressedCallback{ [](const KeyPressedEvent&) {} };
+			std::function<void(const KeyReleasedEvent&)> keyReleasedCallback{ [](const KeyReleasedEvent&) {} };
+			
+		} mCallbacks;
+
 		GLFWwindow* mGLFWwindow{ nullptr };
 	};
 
