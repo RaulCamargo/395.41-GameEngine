@@ -14,6 +14,8 @@ set(HEADER_FILES
 	ShaderImplementation.h
 	Sprite.h
 	SpriteImplementation.h
+	Events.h
+	KeyCodes.h
 	)
 
 set(SOURCE_FILES
@@ -26,6 +28,7 @@ set(SOURCE_FILES
 	Renderer.cpp
 	Shader.cpp
 	Sprite.cpp
+	Events.cpp
 	)
 
 add_library(Flapjack SHARED ${HEADER_FILES} ${SOURCE_FILES})
@@ -43,3 +46,7 @@ include_directories(../glad/include)
 target_precompile_headers(Flapjack PRIVATE pch.h)
 
 target_link_libraries(Flapjack glfw glad stbi)
+
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Flapjack)
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Debug)
+file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Boom)

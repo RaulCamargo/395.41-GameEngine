@@ -1,8 +1,10 @@
 #pragma once
 
+#include "FlapjackUtil.h"
+
 namespace FJ
 {
-	class KeyPressedEvent
+	class FLAPJACK_API KeyPressedEvent
 	{
 	public:
 		KeyPressedEvent(int codeOfKey);
@@ -14,7 +16,7 @@ namespace FJ
 		int mKeyCode;
 	};
 
-	class KeyReleasedEvent
+	class FLAPJACK_API KeyReleasedEvent
 	{
 	public:
 		KeyReleasedEvent(int codeOfKey);

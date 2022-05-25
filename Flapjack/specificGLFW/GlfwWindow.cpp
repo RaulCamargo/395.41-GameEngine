@@ -13,6 +13,7 @@ namespace FJ
 				FLAPJACK_LOG("Error: GLFW failed to initialize.");
 		}
 	}
+
 	bool GlfwWindow::CreateWindow(int width, int height, const std::string& windowName)
 	{
 		mGLFWwindow = glfwCreateWindow(width, height, windowName.c_str(), NULL, NULL); // c_str() makes C++ string useable by C

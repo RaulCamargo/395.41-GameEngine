@@ -1,9 +1,4 @@
 #include "Flapjack.h"
-
-class BoomApp : public FJ::FlapjackApp
-{
-
-
-};
+#include "BoomApp.h"
 
 FLAPJACK_APP_START(BoomApp);

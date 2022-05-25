@@ -18,7 +18,7 @@ namespace FJ
 	
 	bool GameWindow::CreateWindow(int width, int height, const std::string& windowName)
 	{
-		return mWindow->CreateWindow(800, 600, "Boom");
+		return mWindow->CreateWindow(width, height, "Boom");
 	}
 	
 	void GameWindow::SwapBuffers()

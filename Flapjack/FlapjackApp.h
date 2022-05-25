@@ -11,6 +11,7 @@ namespace FJ
 	class FLAPJACK_API FlapjackApp
 	{
 	public:
+		FlapjackApp();
 		void Run();
 		virtual void OnUpdate();
 		void SetKeyPressedCallBack( std::function<void(const KeyPressedEvent &)> keyPressedCallback );

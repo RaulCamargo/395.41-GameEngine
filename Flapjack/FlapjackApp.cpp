@@ -2,6 +2,7 @@
 
 #include "FlapjackApp.h"
 #include "GameWindow.h"
+
 #include "Sprite.h"
 #include "Shader.h"
 #include "Renderer.h"
@@ -10,42 +11,27 @@
 
 namespace FJ
 {
-	void FlapjackApp::Run()
+	FlapjackApp::FlapjackApp()
 	{
-		FLAPJACK_LOG("Flapjack running...")
+		FLAPJACK_LOG("Flapjack running...");
 
 		FJ::GameWindow::Init();
-		
-		FJ::GameWindow::GetWindow()->CreateWindow(800, 600, "Boom");
+
+		FJ::GameWindow::GetWindow()->CreateWindow(2500, 2500, "Boom");
 
 		Renderer::Init();
+	}
 
-		FJ::Sprite star{ "../Flapjack/Assets/Images/Star.png" };
-
-		int xPos{ -star.GetWidth() };
-
+	void FlapjackApp::Run()
+	{
 		mNextFrameTime = std::chrono::steady_clock::now() + mFrameDuration;
-
-		int x{ 50 }, y{ 50 };
-		auto keyCall = [&x](const KeyPressedEvent& event) 
-		{
-			if (event.GetKeyCode() == FLAPJACK_KEY_LEFT) x -= 5;
-			else if (event.GetKeyCode() == FLAPJACK_KEY_RIGHT) x += 5;
-		};
-		auto keyReleased = [](const KeyReleasedEvent& event) {FLAPJACK_LOG(event.GetKeyCode()); };
-		
-		SetKeyPressedCallBack(keyCall);
-		//SetKeyReleasedCallBack(keyReleased);
-
 
 		while (true)
 		{
-			OnUpdate();
-
 			Renderer::ClearScreen();
-
-			Renderer::Draw(star, x, y, 1);
-
+			
+			OnUpdate();
+			
 			std::this_thread::sleep_until(mNextFrameTime);
 
 			FJ::GameWindow::GetWindow()->SwapBuffers();
